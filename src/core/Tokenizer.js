@@ -51,7 +51,7 @@ export default class Tokenizer {
         return new RegExp(`^(${reservedWordsPattern})\\b`, "i");
     }
 
-    createWordRegex(specialChars = []) {
+    createWordRegex(specialChars = [':']) {
         return new RegExp(`^([\\w${specialChars.join("")}]+)`);
     }
 
