@@ -4,6 +4,19 @@ import behavesLikeSqlFormatter from "./behavesLikeSqlFormatter";
 describe("StandardSqlFormatter", function() {
     behavesLikeSqlFormatter();
 
+    it("formats #{} right formatter", function() {
+        expect(sqlFormatter.format(
+            "select t_id from retail.s_od_trade where ds = ${bizdate};"
+        )).toBe(
+            "select\n" +
+            "  t_id\n" +
+            "from\n" +
+            "  retail.s_od_trade\n" +
+            "where\n" +
+            "  ds = ${bizdate};"
+        );
+    });
+
     it("formats short CREATE TABLE", function() {
         expect(sqlFormatter.format(
             "CREATE TABLE items (a INT PRIMARY KEY, b TEXT);"
